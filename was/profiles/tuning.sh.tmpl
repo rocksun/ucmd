@@ -1,0 +1,39 @@
+#!/bin/sh
+
+USERNAME=root
+PASSWORD=root123
+PORT=8879
+HOST=localhost
+
+# TUNINGACTIONS=HEAPSIZE,THREADPOOL,VERBOSEGC,GENERICJVMARGUMENTS
+# TUNINGACTIONS=PROCESSENV,DATASOURCE,WEBCONTAINER,ACCOUNT
+
+# export T_HEAPSIZE_XMS=1024
+# export T_HEAPSIZE_XMX=3072
+
+# export T_THREADPOOL_MIN=100
+# export T_THREADPOOL_MAX=100
+
+# export T_VERBOSEGC_VERBOSE=true
+
+# export T_GENERICJVMARGUMENTS_ARGUMENTS='-Xverbosegclog:${SERVER_LOG_ROOT}/verbosegc.%Y%m%d.%H%M%S.%pid.txt,10,10000 -Xdump:heap:events=user -Xdump:nofailover -Xdisableexplicitgc'
+
+# export T_PROCESSENV_ENVS='IBM_HEAPDUMP:TRUE,IBM_HEAPDUMP_OUTOFMEMORY:TRUE,IBM_JAVADUMP_OUTOFMEMORY:TRUE,IBM_HEAPDUMPDIR:/wasdump,IBM_JAVACOREDIR:/wasdump,IBM_COREDIR:/wasdump'
+
+# export T_JVMLOG_ROLLOVERTYPE="SIZE"
+# export T_JVMLOG_MAXNUMBEROFBACKUPFILES="10"
+# export T_JVMLOG_ROLLOVERSIZE="5"
+
+# export T_DATASOURCE_MINCONNECTIONS="10"
+# export T_DATASOURCE_MAXCONNECTIONS="80"
+# export T_DATASOURCE_CONNECTIONTIMEOUT="60"
+# export T_DATASOURCE_UNUSEDTIMEOUT="300"
+# export T_DATASOURCE_WEBSPHEREDEFAULTISOLATIONLEVEL="3"
+# export T_DATASOURCE_STATEMENTCACHESIZE="100"
+
+# Here is some WAS 8.5.5 internal datasource, ignored by default. You can add Datasource.
+# export T_DATASOURCE_INTERNALDS="DefaultEJBTimerDataSource,DefaultEJBTimerDataSource,OTiSDataSource"
+
+# export T_WEBCONTAINER_PROPS="com.ibm.ws.webcontainer.extractHostHeaderPort:true,trusthostheaderport:true"
+
+# export T_ACCOUNT_USERS="monitor:password:monitor,deployer:password:deployer"

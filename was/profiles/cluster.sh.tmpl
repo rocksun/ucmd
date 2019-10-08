@@ -1,0 +1,33 @@
+#!/bin/sh
+
+DMGR_PROFILE=was1.dmgr01
+MANAGED_PROFILES=was1.cust01,was1.cust02
+CLUSTER=cluster01
+MANAGED_SERVERS=was1.cust01.server01,was1.cust02.server02
+USERNAME=root
+PASSWORD=root123
+
+
+DBPROVIDERNAME="MYDB2"
+DBTYPE=DB2
+#DBTYPE=Oracle
+DBPROVIDERTYPE="DB2 Universal JDBC Driver Provider"
+DBIMPTYPE="Connection pool data source"
+# or if use local connection, use
+# DBIMPTYPE="Connection pool data source"
+# DBPROVIDERNAME="Oracle JDBC Driver (XA)"
+
+# if use own driver, please provide this information. optional.
+DBDRIVERPATH='/WAS/IBM/WebSphere/AppServer/lib/db2driver/db2jcc.jar;/WAS/IBM/WebSphere/AppServer/lib/db2driver/db2jcc_license_cu.jar;/WAS/IBM/WebSphere/AppServer/lib/db2driver/db2jcc_license_cisuz.jar'
+DBUSER=db2inst1
+DBPASSWORD=db2inst1
+
+DSNAME=testds
+DSJNDINAME=testjndids
+DSHELPERCLASS=com.ibm.websphere.rsadapter.DB2UniversalDataStoreHelper
+DSPROPERTIES="[[databaseName java.lang.String gapsdb] [driverType java.lang.Integer 4] [serverName java.lang.String 81.1.129.130] [portNumber java.lang.Integer 50000]]"
+# HELPERCLASS=com.ibm.websphere.rsadapter.Oracle11gDataStoreHelper 
+# DSPROPERTIES="[[URL java.lang.String jdbc:oracle:thin:@8.8.8.8:oradb]]"
+
+DSMINCONN=20
+DSMAXCONN=20
