@@ -9,10 +9,6 @@ WebSphere自动化脚本
 
 实现功能的代码存放的目录，可以按模块存放，例如deploy存放的是发布相关的内容。
 
-### config
-
-客户的全局配置，例如WebSphere安装路径等。
-
 ### profiles
 
 存放某个业务的或某个系统的具体配置，例如某WebSphere的DMGR连接信息，发布的应用信息等。
@@ -21,17 +17,52 @@ WebSphere自动化脚本
 
 具体的业务执行脚本。
 
+
+
 ## 使用说明
 
+### was-install.sh
+
+实现 InstallationManager 和 WebSphere Application Server 的安装，可以通过配置设置一些参数。
+
+
+### was-uninstall.sh
+
+实现 InstallationManager 和 WebSphere Application Server 的卸载，可以通过配置设置一些参数。
+
+
 ### was-tuning.sh
+
+实现对一个 Cell 里的应用服务器配置相同的调优参数。
+
+例如复制 profiles 下 tuning.sh.tmpl 为 tuning.sh ，修改其中的参数，然后执行：
+
+```
+./was-tuning.sh tuning
+```
+
+即可完成所有应用服务器的调优。
+
+
+### was-deploy.sh
+
+通过这个命令，可以重新部署应用，并有一些其他的动作。
+
+例如复制 profiles 下 sample.sh.tmpl 为 app.sh ，修改其中的参数，然后执行：
+
+```
+./was-deploy.sh app
+```
+
+即可执行部署操作，可用参数请参考 sample.sh.tmpl 。
 
 
 
 ### was-config.sh
 
-通过这个命令，可以根据配置的UCMD Profile创建Profile，创建Cluster和Server。
+通过这个命令，可以根据配置的UCMD Profile创建Profile，创建 Cluster 和 Server 。
 
-这个命令只能在DMGR Profile所在主机上执行
+这个命令只能在DMGR Profile所在主机上执行。
 
 #### 前提条件
 
@@ -40,14 +71,14 @@ WebSphere自动化脚本
 操作需要在DMGR所在主机执行，需要配置DMGR主机到本机以及其他主机的WAS用户的SSH认证。具体步骤使用以下命令：
 
 ```
-    # 创建密钥
-    ssh-keygen
+# 创建密钥
+ssh-keygen
 
-    # 将密钥加到需要SSH访问的主机，有多少个主机参与，需要配置多少次，DMGR主机本身也要运行，[username]和[hostname]配置成相应的用户和主机名
-    ssh-copy-id [username]@[hostname]
+# 将密钥加到需要SSH访问的主机，有多少个主机参与，需要配置多少次，DMGR主机本身也要运行，[username]和[hostname]配置成相应的用户和主机名
+ssh-copy-id [username]@[hostname]
 
-    # 如果正常运行，说明已经配置完成
-    ssh [username]@[hostname] date
+# 如果正常运行，说明已经配置完成
+ssh [username]@[hostname] date
 ```
 
 #### 配置UCMD Profile
@@ -55,26 +86,26 @@ WebSphere自动化脚本
 首先创建一个profile，例如，可以复制profiles/cluster.sh.tmpl为profiles/cluster.sh。其中内容类似以下形式：
 
 
-···
-    #!/bin/sh
+```
+#!/bin/sh
 
-    DMGR_PROFILE=was1.dmgr01
-    # 主机名.DMGRProfile名
+DMGR_PROFILE=was1.dmgr01
+# 主机名.DMGRProfile名
 
-    MANAGED_PROFILES=was1.cust01,was1.cust02
-    # “,”隔开的主机名.Profile名
-    # 要保证“主机名.Profile名”的唯一性
+MANAGED_PROFILES=was1.cust01,was1.cust02
+# “,”隔开的主机名.Profile名
+# 要保证“主机名.Profile名”的唯一性
 
-    CLUSTER=cluster01
-    # 需要创建的Cluster名
+CLUSTER=cluster01
+# 需要创建的Cluster名
 
-    MANAGED_SERVERS=was1.cust01.server01,was1.cust02.server02
-    # “,”隔开的主机名.Profile名.Server名
+MANAGED_SERVERS=was1.cust01.server01,was1.cust02.server02
+# “,”隔开的主机名.Profile名.Server名
 
-    USERNAME=root
-    PASSWORD=root123
-    # WAS管理控制台用户名密码
-···
+USERNAME=root
+PASSWORD=root123
+# WAS管理控制台用户名密码
+```
 
 
 #### 运行
