@@ -5,4 +5,6 @@
 
 以后从事 WebSphere 的机会不多了，所以贡献给大家吧。
 
-目前最缺的是 WebSphere 部分的文档。如果有兴趣贡献其他产品的脚本，或者希望改进 WebSphere 脚本，也可以联系我 [RockSun](https://weibo.com/rockdj21)
+目前最缺的是 WebSphere 部分的文档。如果有兴趣贡献其他产品的脚本，或者希望改进 WebSphere 脚本，也可以联系我 [RockSun](https://weibo.com/rockdj21)。
+
+新添加了一套 WebLogic 的脚本，可以用来创建 WebLogic 域、启动脚本、集群和server，以及对 Server 执行调优。详情见 [WebLogic](wls/)。
