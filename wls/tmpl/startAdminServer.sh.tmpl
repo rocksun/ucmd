@@ -1,0 +1,8 @@
+#!/bin/sh
+
+ABSBINPATH=$(cd "$(dirname "$0")"; pwd)  
+export ABSBINPATH
+export DERBY_FLAG=false
+
+export USER_MEM_ARGS="-Xms{xms}m -Xmx{xmx}m -XX:MaxPermSize=256m -Djava.security.egd=file:/dev/./urandom"
+nohup ${ABSBINPATH}/startWebLogic.sh > ${ABSBINPATH}/../servers/{serverName}/logs/nohup.out 2>&1 &
